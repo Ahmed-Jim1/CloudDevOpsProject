@@ -1,0 +1,36 @@
+---
+
+
+- name: Add Jenkins repository key
+  ansible.builtin.apt_key:
+    url: https://pkg.jenkins.io/debian/jenkins.io-2023.key
+    state: present
+
+- name: Add Jenkins repository
+  ansible.builtin.apt_repository:
+    repo: 'deb https://pkg.jenkins.io/debian binary/'
+    state: present
+
+- name: Update apt Cache
+  ansible.builtin.apt:
+    update_cache: yes
+
+
+- name: Install Jenkins
+  ansible.builtin.apt:
+    name: jenkins
+    state: present
+
+
+- name: Start and enable Jenkins
+  ansible.builtin.service:
+    name: jenkins
+    state: started
+    enabled: true
+
+
+- name: Allow traffic on Jenkins port (8080)
+  ansible.builtin.ufw:
+    rule: allow
+    port: 8080
+    proto: tcp
