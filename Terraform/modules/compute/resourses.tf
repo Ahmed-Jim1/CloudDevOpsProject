@@ -1,18 +1,10 @@
 resource "aws_instance" "jenkins_slave" {
   ami                         = var.ami
-  instance_type               = "t2.micro"
+  instance_type               = "t3.xlarge"
   subnet_id                   = var.public-subnet_id
   key_name = "ivolve"
   vpc_security_group_ids      = [var.ec2_sg_id]
   associate_public_ip_address = true
-  user_data = <<-EOF
-              #!/bin/bash
-              yum update -y
-              yum install -y httpd
-              systemctl start httpd
-              systemctl enable httpd
-              echo "Hello, World from EC2!" > /var/www/html/index.html
-              EOF
 
   tags = {
     Name = "jenkins_slave"
@@ -21,6 +13,25 @@ resource "aws_instance" "jenkins_slave" {
     create_before_destroy = true
   }
 }
+resource "aws_instance" "jenkins_master" {
+  ami                         = var.ami
+  instance_type               = "t2.micro"
+  subnet_id                   = var.public-subnet_id
+  key_name = "ivolve"
+  vpc_security_group_ids      = [var.ec2_sg_id]
+  associate_public_ip_address = true
+ 
+  tags = {
+    Name = "jenkins_master"
+  }
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+
+
+
 resource "aws_cloudwatch_metric_alarm" "cpu_alarm" {
   alarm_name          = "high_cpu_utilization"
   comparison_operator = "GreaterThanThreshold"
@@ -33,6 +44,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_alarm" {
   alarm_description   = "Alarm when CPU exceeds 70%"
   dimensions = {
     InstanceId = aws_instance.jenkins_slave.id
+    InstanceId = aws_instance.jenkins_master.id
   }
   alarm_actions = [aws_sns_topic.alert_topic.arn]
 }
