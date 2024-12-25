@@ -3,11 +3,10 @@
   hosts: slave
   become: yes
   roles:
-    # - Sonarqube
-    #   - Gradle
-    #  - Packages 
+    - Sonarqube
+    - Kubectl
     - Docker
-    # - Jenkins-slave
+    - Packages 
     
 
 

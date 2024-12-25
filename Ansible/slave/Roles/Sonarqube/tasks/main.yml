@@ -102,6 +102,13 @@
   tags:
     - sonar_download
 
+- name: Extract SonarQube
+  ansible.builtin.unarchive:
+    src: /opt/{{ sonarqube_version }}.zip
+    dest: /opt
+  tags:
+    - sonar_download
+
 
 - name: Ensure group "sonar" exists
   ansible.builtin.group:

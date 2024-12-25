@@ -1,0 +1,22 @@
+---
+- name: Download the latest stable version of kubectl
+        ansible.builtin.get_url:
+          url: "https://dl.k8s.io/release/{{ kubectl_version }}/bin/linux/amd64/kubectl"
+          dest: /tmp/kubectl
+          mode: '0755'
+  
+- name: Move kubectl to /usr/local/bin
+        ansible.builtin.command:
+          cmd: mv /tmp/kubectl /usr/local/bin/kubectl
+        args:
+          removes: /usr/local/bin/kubectl
+  
+- name: Verify kubectl installation
+        ansible.builtin.command:
+          cmd: kubectl version --client
+        register: kubectl_output
+  
+name: Display kubectl version
+        ansible.builtin.debug:
+          msg: "{{ kubectl_output.stdout }}"
+  

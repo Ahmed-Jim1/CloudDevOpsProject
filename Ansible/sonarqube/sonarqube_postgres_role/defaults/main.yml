@@ -1,6 +1,0 @@
-postgresql_version: "16"           # PostgreSQL version
-postgresql_user: "sonar"           # SonarQube database user
-postgresql_password: "sonarpass"   # Password for the sonar user
-postgresql_db: "sonar"             # Database for SonarQube
-postgresql_port: "5432"            # Default PostgreSQL port
-
