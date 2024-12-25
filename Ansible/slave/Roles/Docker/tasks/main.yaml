@@ -1,0 +1,25 @@
+---
+- name: Install prerequisite packages
+  apt:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ prerequisite_packages }}"
+
+- name: Add Docker GPG key
+  apt_key:
+    url: "{{ docker_gpg_key_url }}"
+    state: present
+
+- name: Add Docker repository
+  apt_repository:
+    repo: "deb [arch=amd64] {{ docker_apt_url }} {{ ansible_distribution_release }} stable"
+    state: present
+
+- name: Install Docker
+  apt:
+    name: "{{ docker_package_name }}"
+    state: present
+    update_cache: yes
+  notify:
+    - Start and enable Docker service

@@ -1,0 +1,7 @@
+---
+- name: Install and Configure PostgreSQL for SonarQube
+  hosts: local
+  become: yes
+  roles:
+    - sonarqube_role
+

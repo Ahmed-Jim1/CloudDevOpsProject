@@ -1,0 +1,54 @@
+---
+- name: Ensure required packages are installed
+  apt:
+    name:
+      - wget
+      - unzip  
+    state: present
+    update_cache: yes
+
+- name: Download Gradle 7.3.3
+  get_url:
+    url: https://services.gradle.org/distributions/gradle-7.3.3-bin.zip
+    dest: /tmp/gradle-7.3.3-bin.zip
+
+- name: Create Gradle installation directory
+  file:
+    path: /opt/gradle
+    state: directory
+    owner: root
+    group: root
+    mode: '0755'
+
+- name: Extract Gradle ZIP file
+  unarchive:
+    src: /tmp/gradle-7.3.3-bin.zip
+    dest: /opt/gradle
+    remote_src: yes
+
+- name: Create a symbolic link to the Gradle directory
+  file:
+    src: /opt/gradle/gradle-7.3.3
+    dest: /opt/gradle/latest
+    state: link
+
+- name: Add Gradle to PATH
+  copy:
+    dest: /etc/profile.d/gradle.sh
+    content: |
+      export PATH=/opt/gradle/latest/bin:$PATH
+    mode: '0755'
+
+- name: Apply the environment changes
+  shell: source /etc/profile.d/gradle.sh
+  args:
+    executable: /bin/bash
+
+- name: Verify Gradle installation
+  command: gradle --version
+  register: gradle_version_output
+
+- name: Show Gradle version
+  debug:
+    msg: "{{ gradle_version_output.stdout }}"
+

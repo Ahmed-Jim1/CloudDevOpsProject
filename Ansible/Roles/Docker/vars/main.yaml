@@ -1,0 +1,10 @@
+---
+docker_apt_url: "https://download.docker.com/linux/ubuntu"
+docker_gpg_key_url: "https://download.docker.com/linux/ubuntu/gpg"
+docker_package_name: "docker-ce"
+docker_group_user: "ansible_user"  # Replace with your user
+prerequisite_packages:
+  - apt-transport-https
+  - ca-certificates
+  - curl
+  - software-properties-common

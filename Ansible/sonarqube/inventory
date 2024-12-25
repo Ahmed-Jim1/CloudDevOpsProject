@@ -1,0 +1,4 @@
+[local]
+localhost ansible_connection=local ansible_user=ansibleusr
+[ec2]
+44.202.151.53 ansible_user=ansibleusr

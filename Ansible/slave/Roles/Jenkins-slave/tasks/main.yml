@@ -1,0 +1,71 @@
+---
+- name: Install OpenJDK 17 (required for Jenkins agent)
+  apt:
+    name: openjdk-17-jdk
+    state: present
+    update_cache: yes
+
+- name: Add Jenkins user (optional)
+  user:
+    name: "{{ jenkins_user }}"
+    shell: /bin/bash
+    state: present
+
+- name: Ensure SSH key-based authentication is set up between master and slave
+  authorized_key:
+    user: "{{ jenkins_user }}"
+    key: "{{ lookup('file', '/path/to/your/jenkins_master_ssh_key.pub') }}"
+    state: present
+    path: "/home/{{ jenkins_user }}/.ssh/authorized_keys"
+
+- name: Install Java (Jenkins Agent requires Java to run)
+  apt:
+    name: openjdk-17-jdk
+    state: present
+
+- name: Create a directory for Jenkins slave configuration
+  file:
+    path: "/home/{{ jenkins_user }}/jenkins-slave"
+    state: directory
+    owner: "{{ jenkins_user }}"
+    group: "{{ jenkins_user }}"
+    mode: "0755"
+
+- name: Download the Jenkins slave agent.jar (if needed)
+  get_url:
+    url: "http://{{ jenkins_master }}:8080/jnlpJars/agent.jar"
+    dest: "/home/{{ jenkins_user }}/jenkins-slave/agent.jar"
+    mode: "0755"
+
+- name: Start Jenkins agent as a service
+  copy:
+    dest: "/etc/systemd/system/jenkins-slave.service"
+    content: |
+      [Unit]
+      Description=Jenkins Slave Agent
+      After=network.target
+
+      [Service]
+      ExecStart=/usr/bin/java -jar /home/{{ jenkins_user }}/jenkins-slave/agent.jar -jnlpUrl http://{{ jenkins_master }}:8080/computer/{{ slave_name }}/slave-agent.jnlp -secret {{ jenkins_slave_secret }}
+      Restart=always
+      User={{ jenkins_user }}
+      WorkingDirectory=/home/{{ jenkins_user }}/jenkins-slave
+
+      [Install]
+      WantedBy=multi-user.target
+  notify:
+    - Enable Jenkins slave service
+    - Start Jenkins slave service
+
+ndlers:
+- name: Enable Jenkins slave service
+  systemd:
+    name: jenkins-slave
+    enabled: yes
+    state: started
+
+- name: Start Jenkins slave service
+  systemd:
+    name: jenkins-slave
+    state: started
+

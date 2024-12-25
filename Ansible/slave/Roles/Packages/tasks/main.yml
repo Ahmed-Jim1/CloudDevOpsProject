@@ -1,0 +1,18 @@
+---
+# Ensure the system package manager is updated
+- name: Update apt cache
+  apt:
+    update_cache: yes
+
+# Install Git
+- name: Install Git
+  apt:
+    name: git
+    state: present
+
+# Verify Git installation
+- name: Verify Git installation
+  command: git --version
+  register: git_version_output
+  ignore_errors: yes
+

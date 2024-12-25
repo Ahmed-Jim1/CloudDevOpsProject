@@ -1,0 +1,7 @@
+---
+- name: Install and Configure PostgreSQL for SonarQube and install Gradle 
+  hosts: master
+  become: yes
+  become_method: sudo  
+  roles:
+    - Jenkins 

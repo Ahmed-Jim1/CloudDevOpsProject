@@ -1,0 +1,13 @@
+---
+- name: Install and Configure PostgreSQL for SonarQube and install Gradle 
+  hosts: slave
+  become: yes
+  roles:
+    # - Sonarqube
+    #   - Gradle
+    #  - Packages 
+    - Docker
+    # - Jenkins-slave
+    
+
+
