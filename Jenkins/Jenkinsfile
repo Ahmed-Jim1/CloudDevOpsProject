@@ -17,39 +17,46 @@ pipeline {
                 script {
                     echo 'Cloning code from Git repository...'
                 }
-                git branch: 'main', url: 'https://github.com/Ahmed-Jim1/FinalProjectCode.git'
+                git branch: 'main', url: 'https://github.com/Ahmed-Jim1/CloudDevOpsProject.git'
             }
         }
         
      
          stage('Build and Test') {
             steps { 
-               
+               dir('FinalProjectCode'){
                buildAndTest()
+               }
             }
         }
         
          stage('SonarQube Analysis') {
             steps {
+               
+               dir('FinalProjectCode'){
                 sonarQubeAnalysis()
+               }
             }
         }
         
         stage('Build Docker Image') {
             steps {
+               dir('FinalProjectCode'){
                 script {
                     dockerTasks.buildDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER)
                 }
+               }  
             }
         }
   
         stage('Login and Push to Docker Hub') {
             steps {
-                script {
-                    
+               dir('FinalProjectCode'){ 
+               script {
                     dockerTasks.dockerLogin(DOCKER_HUB_CREDENTIALS_USR, DOCKER_HUB_CREDENTIALS_PSW)
                     dockerTasks.pushDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER, DOCKER_HUB_REPO)
                 }
+               }
             }
         }
 
@@ -57,7 +64,6 @@ pipeline {
             steps {
                     dir('FinalProjectCode'){
                     sh 'pwd'
-                    sh 'ls'
                     deployToKubernetes(NAMESPACE)
                }        
             }
