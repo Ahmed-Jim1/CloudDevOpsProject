@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ivolve-app
-          image: ivolve-app.yaml 
+          image: ahmedmahmood44/ivolve:latest
           ports:
             - containerPort: 8081
        
