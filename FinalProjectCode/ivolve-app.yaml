@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ivolve-app
-          image: your-docker-image:latest # Replace with your Docker image
+          image: ivolve-app.yaml 
           ports:
             - containerPort: 8081
        
