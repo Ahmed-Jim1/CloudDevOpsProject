@@ -5,7 +5,9 @@ def call(String namespace) {
         sh """
             export KUBECONFIG=${KUBECONFIG}
             kubectl apply -f ivolve-app.yaml --namespace=${namespace}
+            sleep 5
             kubectl get pods --namespace=${namespace}
+            kubectl get svc --namespace=${namespace}
         """
     }
 }
