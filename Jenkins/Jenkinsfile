@@ -1,0 +1,80 @@
+@Library("shared-library@main") _
+   
+pipeline {
+    agent { label 'slave01' } // Use the Jenkins slave labeled 'slave01'
+
+    environment {
+        DOCKER_IMAGE_NAME = 'ivolve'
+        DOCKER_HUB_REPO = 'ahmedmahmood44'
+        DOCKER_HUB_CREDENTIALS = credentials('Docker')
+        NAMESPACE='default'
+    }
+         
+    stages {
+        
+          stage('Git Checkout') {
+            steps {
+                script {
+                    echo 'Cloning code from Git repository...'
+                }
+                git branch: 'main', url: 'https://github.com/Ahmed-Jim1/FinalProjectCode.git'
+            }
+        }
+        
+     
+         stage('Build and Test') {
+            steps { buildAndTest() }
+        }
+        
+         stage('SonarQube Analysis') {
+            steps {
+                sonarQubeAnalysis()
+            }
+        }
+        
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    dockerTasks.buildDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER)
+                }
+            }
+        }
+  
+        stage('Login and Push to Docker Hub') {
+            steps {
+                script {
+                    
+                    dockerTasks.dockerLogin(DOCKER_HUB_CREDENTIALS_USR, DOCKER_HUB_CREDENTIALS_PSW)
+                    dockerTasks.pushDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER, DOCKER_HUB_REPO)
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    deployToKubernetes(NAMESPACE)
+                }
+            }
+        }
+        
+    }
+
+
+    post {
+        
+        always {
+            echo "Cleaning up Docker resources..."
+            script {
+                dockerTasks.dockerCleanup()
+            }
+        }
+        
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
+    }
+}
