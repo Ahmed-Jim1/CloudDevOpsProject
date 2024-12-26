@@ -52,8 +52,8 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                script {
-                    dir ('./FinalProjectCode')
+                   dir ('FinalProjectCode')
+               script {
                     deployToKubernetes(NAMESPACE)
                 }
             }
