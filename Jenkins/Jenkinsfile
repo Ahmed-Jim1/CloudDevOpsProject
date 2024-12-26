@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         DOCKER_IMAGE_NAME = 'ivolve-app'
-        DOCKER_HUB_REPO = 'ahmedmahmood44'
+        DOCKER_HUB_USR = 'ahmedmahmood44'
         DOCKER_HUB_CREDENTIALS = credentials('Docker')
         NAMESPACE='ivolve'
     }
@@ -54,7 +54,7 @@ pipeline {
                dir('FinalProjectCode'){ 
                script {
                     dockerTasks.dockerLogin(DOCKER_HUB_CREDENTIALS_USR, DOCKER_HUB_CREDENTIALS_PSW)
-                    dockerTasks.pushDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER, DOCKER_HUB_REPO)
+                    dockerTasks.pushDockerImage(DOCKER_IMAGE_NAME, env.BUILD_NUMBER, DOCKER_HUB_USR)
                 }
                }
             }
