@@ -27,8 +27,6 @@ The implementation utilizes:
 - Shared Jenkins Library for reusable pipeline logic.
 - Jenkins slave to execute builds and tests.
 
-![File Structure](./image.png) 
-
 ---
 
 ## Prerequisites
@@ -58,6 +56,7 @@ The implementation utilizes:
 5. Commit the `Jenkinsfile` to your repository.
 6. **Validation Step:** screenshot of the pipeline running in Jenkins and all stages passing.
 
+
 ![image](https://github.com/user-attachments/assets/2307b055-7025-47b6-a97d-90b63f968ee2)
 
 ### Step 2: Create the Shared Jenkins Library
@@ -80,6 +79,8 @@ The implementation utilizes:
 3. Commit the shared library to the repository.
 4. Add the shared library to Jenkins by navigating to **Manage Jenkins > Configure System > Global Pipeline Libraries** and defining the library name and repository URL.
 5. **Validation Step:**  screenshot of the shared library configuration in Jenkins.
+
+   
 ![image](https://github.com/user-attachments/assets/b54a633a-a462-4dc7-add1-6ff84092f01b)
 
 ### Step 3: Set Up Jenkins Slave
@@ -89,6 +90,8 @@ The implementation utilizes:
 2. Link the slave to the Jenkins master.
 3. Verify the slave is active in Jenkins.
 4. **Validation Step:** screenshot of the Jenkins slave node configuration and its status as "Online."
+
+   
 ![image](https://github.com/user-attachments/assets/00f37b3b-767c-4c21-b6c9-1ff931636903)
 
 ### Step 4: Configure SonarQube in Jenkins
@@ -97,6 +100,8 @@ The implementation utilizes:
 3. Configure the SonarQube scanner executable in **Manage Jenkins > Global Tool Configuration.**
 4. Ensure the `sonarQubeAnalysis.groovy` script references the correct SonarQube project key.
 5. **Validation Step:** screenshot of the SonarQube project configuration and analysis result in Jenkins.
+
+   
 ![image](https://github.com/user-attachments/assets/1ba38b7d-3b84-48af-8024-fd253b746a28)
 
 
@@ -113,12 +118,26 @@ The implementation utilizes:
    - Application is deployed to AKS.
 5. **Validation Step:**  screenshots of:
    - Last build from Jenkins pipeline.
+
+   
      ![image](https://github.com/user-attachments/assets/ccf25956-1e3d-4e9b-9e6a-413b01c3a033)
+
+     
    - Successful Docker image push to the registry.
+  
+     
      ![image](https://github.com/user-attachments/assets/e423e435-12b6-47ab-97c1-91fbd27053c1)
+
+     
    - Kubernetes deployment running in AKS.
+  
+     
      ![image](https://github.com/user-attachments/assets/61c46a3c-8e3c-43f9-9de1-cee4a45d1573)
+  
+     
      ![image](https://github.com/user-attachments/assets/3466fdad-c3db-44de-b4d8-c005a4670254)
+
+     
 
 ---
 
