@@ -23,7 +23,10 @@ pipeline {
         
      
          stage('Build and Test') {
-            steps { buildAndTest() }
+            steps { 
+               
+               buildAndTest()
+            }
         }
         
          stage('SonarQube Analysis') {
@@ -52,10 +55,8 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                   dir ('FinalProjectCode')
-               script {
+                    dir('FinalProjectCode')
                     deployToKubernetes(NAMESPACE)
-                }
             }
         }
         
