@@ -4,7 +4,7 @@ pipeline {
     agent { label 'slave01' } // Use the Jenkins slave labeled 'slave01'
 
     environment {
-        DOCKER_IMAGE_NAME = 'ivolve'
+        DOCKER_IMAGE_NAME = 'ivolve-app'
         DOCKER_HUB_REPO = 'ahmedmahmood44'
         DOCKER_HUB_CREDENTIALS = credentials('Docker')
         NAMESPACE='ivolve'
