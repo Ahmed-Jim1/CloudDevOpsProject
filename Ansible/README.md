@@ -1,7 +1,7 @@
 # Ansible Roles for EC2 Instance Configuration
 
 ## Table of Contents
-1. [Project Overview](#project-overview)
+1. [Task Overview](#Task-overview)
 2. [Directory Structure](#directory-structure)
 3. [Roles Explanation](#roles-explanation)
     - [Master Node Roles](#master-node-roles)
@@ -11,7 +11,7 @@
 
 ---
 
-## Project Overview
+## Task Overview
 This project utilizes Ansible playbooks and roles to automate the configuration of EC2 instances. The goal is to install and configure the necessary packages and services required for the environment, including Jenkins, Docker, SonarQube, and other dependencies.
 
 The configuration is divided into two nodes:
