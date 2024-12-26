@@ -1,6 +1,6 @@
 ![ivolve-lg](https://github.com/user-attachments/assets/857233f7-0c08-4c2f-95d0-7b1e14342940)
 
-# Final DevOps Project: Infrastructure Automation and Java App Deployment Using Terraform, Ansible, CI/CD with Jenkins and AKS Cluster
+# Final Project: Infrastructure Automation and Java App Deployment Using Terraform, Ansible, CI/CD with Jenkins and AKS Cluster
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
