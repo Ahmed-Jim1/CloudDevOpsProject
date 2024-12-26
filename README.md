@@ -1,6 +1,6 @@
 ![ivolve-lg](https://github.com/user-attachments/assets/857233f7-0c08-4c2f-95d0-7b1e14342940)
 
-# Final DevOps Project: Containerization, Infrastructure Provisioning, and CI/CD Pipeline
+# Final DevOps Project: Infrastructure Automation and Java App Deployment Using Terraform, Ansible, CI/CD with Jenkins and AKS Cluster
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -19,6 +19,12 @@
 
 ## Project Overview
 This project focuses on building a complete DevOps pipeline that incorporates containerization, infrastructure provisioning, AWS integration, configuration management, and continuous integration. The final deployment happens on an Azure Kubernetes Service (AKS) cluster using Jenkins pipelines.
+
+
+
+<img width="4832" alt="AWS cloud diagram" src="https://github.com/user-attachments/assets/c745dd5b-d870-40d9-a07f-058b9f3104b0" />
+
+
 
 ---
 
@@ -55,7 +61,6 @@ This project focuses on building a complete DevOps pipeline that incorporates co
 - **VPC** with public and private subnets.
 - **Security Groups** to allow SSH and application access.
 - **EC2 Instance** for hosting the application.
-
 ---
 
 ### 3. AWS Integration
@@ -92,7 +97,6 @@ This project focuses on building a complete DevOps pipeline that incorporates co
     - Use Jenkins **shared libraries** and a Jenkins **slave** node.
 - **Deliverables**:
     - Jenkins pipeline configuration committed to `Jenkinsfile`.
-
 ---
 
 ### 6. Documentation
@@ -130,13 +134,20 @@ This project implements the following architecture:
    terraform apply
    ```
 3. Configure EC2 instances with Ansible:
+   On your master machine setup your inventory and run this command 
    ```bash
+   cd Ansible/master
    ansible-playbook -i inventory playbook.yml
    ```
-4. Configure Jenkins pipeline:
+   On your slave machine setup your inventory and run this command
+   ```bash
+   cd Ansible/slave
+   ansible-playbook -i inventory playbook.yml
+   ```
+5. Configure Jenkins pipeline:
    - Add the `Jenkinsfile` to your Jenkins job.
    - Use shared libraries for pipeline stages.
-5. Verify AKS Deployment:
+6. Verify AKS Deployment:
    ```bash
    kubectl get pods
    kubectl get services
