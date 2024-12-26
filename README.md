@@ -22,7 +22,7 @@ This project focuses on building a complete DevOps pipeline that incorporates co
 
 
 
-<img width="4832" alt="AWS cloud Devops diagram" src="https://github.com/user-attachments/assets/a0f2fe6e-a472-4857-b184-fdfc95d20ab2" />
+<img width="4832" alt="AWS cloud DevOps diagram 1" src="https://github.com/user-attachments/assets/bfd024fc-2019-44b8-ac3f-d4b80e79890d" />
 
 
 
