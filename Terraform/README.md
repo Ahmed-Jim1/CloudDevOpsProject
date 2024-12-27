@@ -21,7 +21,7 @@ This architecture demonstrates a Virtual Private Cloud (VPC) setup using Terrafo
 - CloudWatch monitoring configured to trigger an SNS alert when CPU usage exceeds 70%.
 - SNS topic integrated with an email notification system.
 
-![image](https://github.com/user-attachments/assets/d15c2631-b5c8-4629-b917-ee35dabc6b1a)
+![image](https://github.com/user-attachments/assets/8cc0bd95-e630-4dc9-b6ca-d8fcffc6bf6e)
 
 ---
 
