@@ -7,6 +7,7 @@
     - [Step 1: Create AKS Cluster](#step-1-create-aks-cluster)
     - [Step 2: Install Argo CD](#step-2-install-argo-cd)
     - [Step 3: Patch Service and Access Argo CD](#step-3-patch-service-and-access-argo-cd)
+    - [Step 4: Add new project on Argo-CD ](#step-3-add-new-project)
 4. [Troubleshooting](#troubleshooting)
 5. [Conclusion](#conclusion)
 
@@ -47,9 +48,13 @@ This guide describes the steps to set up an AKS cluster and install Argo CD for 
 6. Create a Ubuntu VM and connect to it to manage your cluster.
 
 **Validation Step:**
-- Take a screenshot of the AKS cluster nodes:
+- Take a screenshot of the AKS cluster nodes and vm running :
 
 ![image](https://github.com/user-attachments/assets/fd173205-84c3-46c3-b945-4bae2c144f7c)
+
+
+![image](https://github.com/user-attachments/assets/60dcdcf8-6b29-4ee9-87d8-cb2c33aa3f7d)
+
 
 ---
 
@@ -155,7 +160,32 @@ This guide describes the steps to set up an AKS cluster and install Argo CD for 
 **Validation Step:**
 - Take a screenshot of the Argo CD login page and dashboard.
 
+![image](https://github.com/user-attachments/assets/87a6bdd2-6972-4165-8fe4-d7100a66899a)
+
 ---
+### Step 4: Add new project on Argo-CD
+
+#### create App in argo-cd
+1. on the top of the dashboard click NEW APP
+![image](https://github.com/user-attachments/assets/dd269a8a-e798-442a-96f0-4da2dade2e48)
+
+2. configure your app
+   ![image](https://github.com/user-attachments/assets/9c706c47-cfa6-4faf-9815-ba95c4be281c)
+   
+   ![image](https://github.com/user-attachments/assets/69724d56-1260-41eb-bdb1-3a1fa3c8b020)
+
+   ![image](https://github.com/user-attachments/assets/77a12b96-5267-4e36-b0de-8db73ae61c4b)
+
+**Validation Step:**
+- Argo CD Dashboard with the app and app details .
+
+
+  ![image](https://github.com/user-attachments/assets/b9186a40-0994-4245-8b52-4ea8b007986f)
+
+  ![image](https://github.com/user-attachments/assets/92829adc-02ec-4957-ab49-21986fb3b912)
+
+
+
 
 ## Troubleshooting
 - **Service Not Accessible**:
