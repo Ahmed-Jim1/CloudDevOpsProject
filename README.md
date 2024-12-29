@@ -15,7 +15,7 @@ This project focuses on building a complete DevOps pipeline that incorporates co
 
 
 
-![image](https://github.com/user-attachments/assets/468b0633-5281-4d83-bbe8-213d459c874a)
+<img width="3296" alt="final" src="https://github.com/user-attachments/assets/8a2a9f36-4053-42f6-a632-7e41d67d4b1b" />
 
 
 
