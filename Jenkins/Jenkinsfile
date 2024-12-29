@@ -63,7 +63,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                     dir('FinalProjectCode'){
-                    sh 'pwd'
+                       
                     deployToKubernetes(NAMESPACE)
                }        
             }
