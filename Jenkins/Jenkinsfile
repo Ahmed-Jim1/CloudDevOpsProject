@@ -62,7 +62,7 @@ pipeline {
 
         stage('Deploy to Kubernetes') {
             steps {
-                    dir('FinalProjectCode'){
+                    dir('AKS-ArgoCD'){
                        
                     deployToKubernetes(NAMESPACE)
                }        
