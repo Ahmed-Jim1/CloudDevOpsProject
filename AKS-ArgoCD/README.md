@@ -56,6 +56,10 @@ This guide describes the steps to set up an AKS cluster and install Argo CD for 
 ![image](https://github.com/user-attachments/assets/60dcdcf8-6b29-4ee9-87d8-cb2c33aa3f7d)
 
 
+![image](https://github.com/user-attachments/assets/f2841f51-c316-444d-b386-c176508f8e82)
+
+
+
 ---
 
 ### Step 2: Install Argo CD
@@ -142,6 +146,9 @@ This guide describes the steps to set up an AKS cluster and install Argo CD for 
    ```bash
    kubectl get svc argo-cd-argocd-server -n argo-cd
    ```
+   ![image](https://github.com/user-attachments/assets/43da64c0-af4a-4147-be21-278cd7b8effe)
+
+   
    Ensure the `EXTERNAL-IP` field is populated once the LoadBalancer is provisioned.
 
 #### Configure NSG Rules in Azure
