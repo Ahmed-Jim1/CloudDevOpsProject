@@ -119,7 +119,7 @@ This guide describes the steps to set up an AKS cluster and install Argo CD for 
      "spec": {
        "ports": [
          {
-           "port": 443,
+           "port": 8080,
            "targetPort": 443,
            "name": "https"
          },
