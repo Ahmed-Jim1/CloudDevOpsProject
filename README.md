@@ -1,7 +1,6 @@
 ![ivolve-lg](https://github.com/user-attachments/assets/857233f7-0c08-4c2f-95d0-7b1e14342940)
 
-# Final Project:
-# Complete DevOps Workflow: Automating Java App Deployment with Terraform, Ansible, Jenkins Pipelines, AKS, and Continuous Sync via Argo CD.
+# Final Project: Automating Java App Deployment with Terraform, Ansible, Jenkins Pipelines, AKS, and Continuous Sync via Argo CD.
 
 1. [Project Overview](#project-overview)
 2. [Technologies Used](#technologies-used)
