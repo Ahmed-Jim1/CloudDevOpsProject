@@ -8,6 +8,9 @@ pipeline {
         DOCKER_HUB_USR = 'ahmedmahmood44'
         DOCKER_HUB_CREDENTIALS = credentials('Docker')
         NAMESPACE='ivolve'
+        Git-Repo-Name = 'CloudDevOpsProject'
+        Git-Email= 'ahmedmahmuod724@gmail.com' 
+        
     }
          
     stages {
@@ -60,11 +63,14 @@ pipeline {
             }
         }
 
-        stage('Deploy to Kubernetes') {
+        stage('UpdateGit') {  //update deployment file to set new image to use Argo-CD
             steps {
                     dir('AKS-ArgoCD'){
                        
-                    deployToKubernetes(NAMESPACE)
+                 script {
+                  updateGit(Git-Repo-Name, "${env.BUILD_NUMBER}", Git-Email)
+                   }
+                       
                }        
             }
         }
