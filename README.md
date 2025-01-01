@@ -1,8 +1,7 @@
 ![ivolve-lg](https://github.com/user-attachments/assets/857233f7-0c08-4c2f-95d0-7b1e14342940)
 
-# Final Project: Infrastructure Automation and Java App Deployment Using Terraform, Ansible, CI/CD with Jenkins and AKS Cluster
+# Final Project: Complete DevOps Workflow: Automating Java App Deployment with Terraform, Ansible, Jenkins CI/CD Pipelines, AKS, and Continuous Sync via Argo CD.
 
-## Table of Contents
 1. [Project Overview](#project-overview)
 2. [Technologies Used](#technologies-used)
 3. [Setup Instructions](#setup-instructions)
@@ -17,7 +16,7 @@ This project focuses on building a complete DevOps pipeline that incorporates co
 
 <img width="3296" alt="final-elfinal" src="https://github.com/user-attachments/assets/727a6e64-7782-48d1-bd2d-08804e24c3a3" />
 
-**Look at each directory README.md File*
+**Look at each directory README.md File**
 
 ---
 
