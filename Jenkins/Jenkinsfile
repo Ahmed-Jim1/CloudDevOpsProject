@@ -8,8 +8,8 @@ pipeline {
         DOCKER_HUB_USR = 'ahmedmahmood44'
         DOCKER_HUB_CREDENTIALS = credentials('Docker')
         NAMESPACE='ivolve'
-        Git-Repo-Name = 'CloudDevOpsProject'
-        Git-Email= 'ahmedmahmuod724@gmail.com' 
+        GIT_REPO_NAME = 'CloudDevOpsProject'
+        GIT_EMAIL= 'ahmedmahmuod724@gmail.com' 
         
     }
          
@@ -68,7 +68,7 @@ pipeline {
                     dir('AKS-ArgoCD'){
                        
                  script {
-                  updateGit(Git-Repo-Name, "${env.BUILD_NUMBER}", Git-Email)
+                  updateGit(GIT_REPO_NAME, "${env.BUILD_NUMBER}",GIT_EMAIL)
                    }
                        
                }        
